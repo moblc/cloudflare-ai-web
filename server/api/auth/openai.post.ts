@@ -2,31 +2,39 @@ import {handleErr, openaiParser, streamResponse} from "~/utils/helper";
 import {OpenAIBody, OpenAIReq} from "~/utils/types";
 
 export default defineEventHandler(async (event) => {
-    const body: OpenAIReq = await readBody(event);
-    const {model, messages, key, endpoint} = body;
+    const body: OpenAIReq = await readBody(event)
+    const {model, endpoint, messages, key} = body
 
     const openAIBody: OpenAIBody = {
         stream: true,
         model,
         messages,
-    };
-
-    const apiUrl = process.env.OPENAI_API_URL ?
-        `${process.env.OPENAI_API_URL}/v1/chat/completions` :
-        `${process.env.CF_GATEWAY}/openai/${endpoint}`;
-
-    const res = await fetch(apiUrl, {
+    }
+    let postUrl=''
+    let authKey=''
+    switch (openAIBody.model) {
+        case 'claude-3-5-sonnet-20240620':
+        case 'gpt-4-turbo':
+        case 'gpt-4o':
+        case 'gpt-4o-mini':
+        case 'spark':
+        case 'step-1v-32k':
+        case 'kimi':
+        postUrl=`${process.env.api}/${endpoint}`
+        authKey=`Bearer ${process.env.apikey}`
+            break;
+    }    
+    const res = await fetch(postUrl, {
         method: 'POST',
         headers: {
-            Authorization: key === undefined ? `Bearer ${process.env.OPENAI_API_KEY}` : `Bearer ${key}`,
+            Authorization: key === undefined ? authKey : `Bearer ${key}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(openAIBody),
-    });
-
+    })        
     if (!res.ok) {
-        return handleErr(res);
+        return handleErr(res)
     }
+    return streamResponse(res, openaiParser)
 
-    return streamResponse(res, openaiParser);
-});
+})

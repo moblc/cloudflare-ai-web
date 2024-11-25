@@ -62,7 +62,7 @@ export const DB = new Database();
 export const initialSettings = {
     openaiKey: '',
     image_steps: 20,
-    system_prompt: 'You are ChatGPT, a large language model trained by OpenAI. Follow the user\'s instructions carefully. Respond using markdown.',
+    system_prompt: 'Follow the user\'s instructions carefully. Respond using markdown.',
 }
 
 export type Settings = typeof initialSettings
@@ -82,11 +82,52 @@ export const uniModals: Model[] = [
     }
 ]
 
-export const textGenModels: Model[] = [{
-    id: 'gpt-3.5-turbo',
-    name: 'ChatGPT-3.5-turbo',
+export const textGenModels: Model[] = [
+{
+    id: 'claude-3-5-sonnet-20240620',
+    name: 'claude-3-5-sonnet-20240620',
     provider: 'openai',
-    endpoint: 'chat/completions',
+    endpoint: 'v1/chat/completions',
+    type: 'chat'
+},
+{
+    id: 'gpt-4-turbo',
+    name: 'GPT-4-turbo',
+    provider: 'openai',
+    endpoint: 'v1/chat/completions',
+    type: 'chat'
+},
+{
+    id: 'gpt-4o',
+    name: 'GPT-4o',
+    provider: 'openai',
+    endpoint: 'v1/chat/completions',
+    type: 'chat'
+},
+{
+    id: 'gpt-4o-mini',
+    name: 'GPT-4o-mini',
+    provider: 'openai',
+    endpoint: 'v1/chat/completions',
+    type: 'chat'
+},
+{
+    id: 'spark',
+    name: '讯飞星火大模型',
+    provider: 'openai',
+    endpoint: 'v1/chat/completions',
+    type: 'chat'
+}, {
+    id: 'step-1v-32k',
+    name: '跃问',
+    provider: 'openai',
+    endpoint: 'v1/chat/completions',
+    type: 'chat'
+}, {
+    id: 'kimi',
+    name: '月之暗面kimi',
+    provider: 'openai',
+    endpoint: 'v1/chat/completions',
     type: 'chat'
 }, {
     id: '@cf/qwen/qwen1.5-14b-chat-awq',
