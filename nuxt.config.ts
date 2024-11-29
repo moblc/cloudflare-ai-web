@@ -4,17 +4,14 @@ export default defineNuxtConfig({
   devtools: {enabled: false},
   modules: ['@nuxt/ui', '@nuxtjs/i18n'],
   css: ['~/assets/css/style.css'],
-
   devServer: {
       port: 3001,
   },
-
   routeRules: {
       '/': {
           prerender: true,
       },
   },
-
   app: {
       head: {
           title: '小助手',
@@ -36,7 +33,6 @@ export default defineNuxtConfig({
           ]
       }
   },
-
   // nitro: {
   //     vercel: {
   //         regions: ["sin1", "syd1", "sfo1", "iad1", "pdx1", "cle1"]
@@ -47,6 +43,5 @@ export default defineNuxtConfig({
       strategy: 'no_prefix',
       defaultLocale: 'zh',
   },
-
   compatibilityDate: '2024-07-28'
 })
