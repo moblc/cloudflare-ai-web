@@ -13,6 +13,7 @@ export default defineEventHandler(async (event) => {
     let postUrl=''
     let authKey=''
     switch (openAIBody.model) {
+        case 'gpt-4-turbo':
         case 'gpt-4o':
         case 'gpt-4o-mini':
         case 'spark':

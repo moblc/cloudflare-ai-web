@@ -83,6 +83,13 @@ export const uniModals: Model[] = [
 ]
 
 export const textGenModels: Model[] = [
+    {
+        id: 'gpt-4-turbo',
+        name: 'GPT-4-Turbo',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    },
 {
     id: 'gpt-4o',
     name: 'GPT-4o',

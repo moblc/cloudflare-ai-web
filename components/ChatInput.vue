@@ -11,7 +11,7 @@ const fileList = ref<{
 }[]>([])
 
 onMounted(() => {
-  toast.add({ title: "如需联系上文请开启左下角携带历史记录，图像生成请输入英文描述词，近期使用量太大，后续如果再不稳定就更换项目，使用批量组建账号池的方式使用官方服务来增加稳定性" })
+  toast.add({ title: "如需联系上文请开启左下角携带历史记录，图像生成请输入英文描述词，近期使用量太大，马上准备使用批量组建账号池的方式来使用以增加稳定性" })
   addHistory.value = localStorage.getItem('addHistory') === 'true'
 })
 watch(addHistory, () => {
