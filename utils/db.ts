@@ -1,4 +1,4 @@
-import Dexie, {type Table} from 'dexie';
+import Dexie, { type Table } from 'dexie';
 
 export class Database extends Dexie {
     history!: Table<HistoryItem>
@@ -46,7 +46,7 @@ export class Database extends Dexie {
     }
 
     addTab(label: string) {
-        return DB.tab.add({label, created_at: Date.now()})
+        return DB.tab.add({ label, created_at: Date.now() })
     }
 
     deleteTabAndHistory(id: number) {
@@ -84,80 +84,94 @@ export const uniModals: Model[] = [
 
 export const textGenModels: Model[] = [
     {
+        id: 'gemini-1.5-flash-latest',
+        name: 'Gemini 1.5 flash',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    },
+    {
+        id: 'gemini-1.5-pro-latest',
+        name: 'Gemini 1.5 Pro',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    },
+    {
         id: 'gpt-4-turbo',
         name: 'GPT-4-Turbo',
         provider: 'openai',
         endpoint: 'v1/chat/completions',
         type: 'chat'
     },
-{
-    id: 'gpt-4o',
-    name: 'GPT-4o',
-    provider: 'openai',
-    endpoint: 'v1/chat/completions',
-    type: 'chat'
-},
-{
-    id: 'gpt-4o-mini',
-    name: 'GPT-4o-mini',
-    provider: 'openai',
-    endpoint: 'v1/chat/completions',
-    type: 'chat'
-},
-{
-    id: 'spark',
-    name: '讯飞星火大模型',
-    provider: 'openai',
-    endpoint: 'v1/chat/completions',
-    type: 'chat'
-}, {
-    id: 'step-1v-32k',
-    name: '跃问',
-    provider: 'openai',
-    endpoint: 'v1/chat/completions',
-    type: 'chat'
-}, {
-    id: 'kimi',
-    name: '月之暗面kimi',
-    provider: 'openai',
-    endpoint: 'v1/chat/completions',
-    type: 'chat'
-}, {
-    id: '@cf/qwen/qwen1.5-14b-chat-awq',
-    name: 'qwen1.5-14b-chat-awq',
-    provider: 'workers-ai',
-    type: 'chat'
-}, {
-    id: '@cf/openchat/openchat-3.5-0106',
-    name: 'openchat-3.5-0106',
-    provider: 'workers-ai',
-    type: 'chat'
-}, {
-    id: '@cf/google/gemma-7b-it-lora',
-    name: 'gemma-7b-it-lora',
-    provider: 'workers-ai',
-    type: 'chat'
-}, {
-    id: '@hf/thebloke/openhermes-2.5-mistral-7b-awq',
-    name: 'openhermes-2.5-mistral-7b-awq',
-    provider: 'workers-ai',
-    type: 'chat'
-}, {
-    id: '@hf/thebloke/neural-chat-7b-v3-1-awq',
-    name: 'neural-chat-7b-v3-1-awq',
-    provider: 'workers-ai',
-    type: 'chat'
-}, {
-    id: '@hf/nexusflow/starling-lm-7b-beta',
-    name: 'starling-lm-7b-beta',
-    provider: 'workers-ai',
-    type: 'chat'
-}, {
-    id: '@cf/meta/llama-3-8b-instruct',
-    name: 'llama-3-8b-instruct',
-    provider: 'workers-ai',
-    type: 'chat'
-}]
+    {
+        id: 'gpt-4o',
+        name: 'GPT-4o',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    },
+    {
+        id: 'gpt-4o-mini',
+        name: 'GPT-4o-mini',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    },
+    {
+        id: 'spark',
+        name: '讯飞星火大模型',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    }, {
+        id: 'step-1v-32k',
+        name: '跃问',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    }, {
+        id: 'kimi',
+        name: '月之暗面kimi',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    }, {
+        id: '@cf/qwen/qwen1.5-14b-chat-awq',
+        name: 'qwen1.5-14b-chat-awq',
+        provider: 'workers-ai',
+        type: 'chat'
+    }, {
+        id: '@cf/openchat/openchat-3.5-0106',
+        name: 'openchat-3.5-0106',
+        provider: 'workers-ai',
+        type: 'chat'
+    }, {
+        id: '@cf/google/gemma-7b-it-lora',
+        name: 'gemma-7b-it-lora',
+        provider: 'workers-ai',
+        type: 'chat'
+    }, {
+        id: '@hf/thebloke/openhermes-2.5-mistral-7b-awq',
+        name: 'openhermes-2.5-mistral-7b-awq',
+        provider: 'workers-ai',
+        type: 'chat'
+    }, {
+        id: '@hf/thebloke/neural-chat-7b-v3-1-awq',
+        name: 'neural-chat-7b-v3-1-awq',
+        provider: 'workers-ai',
+        type: 'chat'
+    }, {
+        id: '@hf/nexusflow/starling-lm-7b-beta',
+        name: 'starling-lm-7b-beta',
+        provider: 'workers-ai',
+        type: 'chat'
+    }, {
+        id: '@cf/meta/llama-3-8b-instruct',
+        name: 'llama-3-8b-instruct',
+        provider: 'workers-ai',
+        type: 'chat'
+    }]
 
 export const imageGenModels: Model[] = [{
     id: '@cf/lykon/dreamshaper-8-lcm',
@@ -176,4 +190,4 @@ export const imageGenModels: Model[] = [{
     type: 'text-to-image'
 }]
 
-export const models: Model[] = [...uniModals, ...textGenModels, ...imageGenModels]
+export const models: Model[] = [...textGenModels, ...imageGenModels]
