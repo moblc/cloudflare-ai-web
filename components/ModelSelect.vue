@@ -12,14 +12,7 @@ watch(selectedModel, v => {
 })
 
 const groups = computed(() => [
-  {
-    key: 'universal',
-    label: t('universal'),
-    commands: uniModals.map(i => ({
-      id: i.id,
-      label: i.name
-    }))
-  }, {
+ {
     key: 'text generation',
     label: t('text_generation'),
     commands: textGenModels.map(i => ({

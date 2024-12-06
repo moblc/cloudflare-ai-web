@@ -13,8 +13,6 @@ export default defineEventHandler(async (event) => {
     let postUrl=''
     let authKey=''
     switch (openAIBody.model) {
-        case 'gemini-1.5-flash-latest':
-        case 'gemini-1.5-pro-latest':
         case 'gpt-4-turbo':
         case 'gpt-4o':
         case 'gpt-4o-mini':
