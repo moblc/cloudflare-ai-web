@@ -124,13 +124,8 @@ export const textGenModels: Model[] = [
         provider: 'openai',
         endpoint: 'v1/chat/completions',
         type: 'chat'
-    }, {
-        id: 'step-1v-32k',
-        name: '跃问',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    }, {
+    },
+    {
         id: 'kimi',
         name: '月之暗面kimi',
         provider: 'openai',
