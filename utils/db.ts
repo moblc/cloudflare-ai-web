@@ -98,6 +98,13 @@ export const textGenModels: Model[] = [
         type: 'chat'
     },
     {
+        id: 'deepseek-ai/DeepSeek-R1',
+        name: 'deepSeek-R1',
+        provider: 'openai',
+        endpoint: 'v1/chat/completions',
+        type: 'chat'
+    },
+    {
         id: 'gpt-4-turbo',
         name: 'GPT-4-Turbo',
         provider: 'openai',
