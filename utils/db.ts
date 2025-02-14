@@ -99,7 +99,7 @@ export const textGenModels: Model[] = [
     },
     {
         id: 'deepseek-ai/DeepSeek-R1',
-        name: 'deepSeek-R1',
+        name: 'DeepSeek-R1',
         provider: 'openai',
         endpoint: 'v1/chat/completions',
         type: 'chat'

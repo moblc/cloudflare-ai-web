@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
         case 'gpt-4o-mini':
         case 'spark':
         case 'kimi':
-        case 'deepSeek-R1':
+        case 'DeepSeek-R1':
         postUrl=`${process.env.api}/${endpoint}`
         authKey=`Bearer ${process.env.apikey}`
             break;
