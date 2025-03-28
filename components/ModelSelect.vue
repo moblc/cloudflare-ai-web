@@ -1,35 +1,52 @@
 <script setup lang="ts">
-import { imageGenModels, textGenModels, uniModals } from "~/utils/db";
-
 const { t } = useI18n()
-const { selectedModel, openModelSelect } = useGlobalState()
-onMounted(() => {
-  const model = localStorage.getItem('selectedModel')
-  selectedModel.value = models.find(i => i.id === model) || uniModals[0]
-})
-watch(selectedModel, v => {
-  localStorage.setItem('selectedModel', v.id)
-})
+const { selectedModel, openModelSelect, models } = useGlobalState()
 
-const groups = computed(() => [
- {
-    key: 'text generation',
-    label: t('text_generation'),
-    commands: textGenModels.map(i => ({
+async function fetchModels() {
+  try {
+    const res = await fetch('/api/auth/models')
+    if (res.ok) {
+      const data = await res.json() as ModelResponse
+      models.value = data.data.map(m => ({
+        id: m.id,
+        name: m.id,
+        provider: 'openai',
+        type: m.id.includes('image') ? 'text-to-image' : 'chat',
+        endpoint: 'v1/chat/completions'
+      }))
+
+      const savedModel = localStorage.getItem('selectedModel')
+      selectedModel.value = models.value.find(i => i.id === savedModel) || models.value[0]
+    }
+  } catch (error) {
+    console.error('获取模型列表失败:', error)
+  }
+}
+
+onMounted(fetchModels)
+
+const groups = computed(() => [{
+  key: 'text generation',
+  label: t('text_generation'),
+  commands: models.value
+    .filter(m => m.type === 'chat')
+    .map(i => ({
       id: i.id,
       label: i.name
     }))
-  }, {
-    key: 'image generation',
-    label: t('image_generation'),
-    commands: imageGenModels.map(i => ({
+}, {
+  key: 'image generation',
+  label: t('image_generation'),
+  commands: models.value
+    .filter(m => m.type === 'text-to-image')
+    .map(i => ({
       id: i.id,
       label: i.name
     }))
-  }])
+}])
 
 function onSelect(option: { id: string }) {
-  selectedModel.value = models.find(i => i.id === option.id) || textGenModels[0]
+  selectedModel.value = models.value.find(i => i.id === option.id) || models.value[0]
   openModelSelect.value = !openModelSelect.value
 }
 </script>

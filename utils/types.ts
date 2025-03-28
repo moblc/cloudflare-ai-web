@@ -76,6 +76,16 @@ export interface WorkersRes {
     response: string
 }
 
+export interface ModelResponse {
+    object: string
+    data: {
+        id: string
+        object: string
+        created: number
+        owned_by: string
+    }[]
+}
+
 // export interface GeminiReq {
 //     model: string
 //     messages: OpenAIMessage[]
