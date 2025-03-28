@@ -1,7 +1,8 @@
 export default defineEventHandler(async (event) => {
-  const res = await fetch(`${process.env.api}/v1/models`, {
+  const config = useRuntimeConfig()
+  const res = await fetch(`${config.api}/v1/models`, {
     headers: {
-      'Authorization': `Bearer ${process.env.apikey}`
+      'Authorization': `Bearer ${config.apikey}`
     }
   })
 

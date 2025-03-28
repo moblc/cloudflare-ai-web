@@ -43,5 +43,9 @@ export default defineNuxtConfig({
         strategy: 'no_prefix',
         defaultLocale: 'zh',
     },
-    compatibilityDate: '2024-07-28'
+    compatibilityDate: '2024-07-28',
+    runtimeConfig: {
+        api: process.env.api,
+        apikey: process.env.apikey
+    }
 })
