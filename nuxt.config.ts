@@ -33,11 +33,6 @@ export default defineNuxtConfig({
             ]
         }
     },
-    // nitro: {
-    //     vercel: {
-    //         regions: ["sin1", "syd1", "sfo1", "iad1", "pdx1", "cle1"]
-    //     }
-    // }
     i18n: {
         vueI18n: './i18n.config.ts',
         strategy: 'no_prefix',
