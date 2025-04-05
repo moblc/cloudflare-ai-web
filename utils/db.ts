@@ -67,114 +67,7 @@ export const initialSettings = {
 
 export type Settings = typeof initialSettings
 
-export const uniModals: Model[] = [
-    {
-        id: 'gemini-1.5-flash',
-        name: 'Gemini 1.5 flash',
-        provider: 'google',
-        type: 'universal'
-    },
-    {
-        id: 'gemini-1.5-pro',
-        name: 'Gemini 1.5 Pro',
-        provider: 'google',
-        type: 'universal'
-    }
-]
-
-export const textGenModels: Model[] = [
-    {
-        id: 'gemini-1.5-flash-latest',
-        name: 'gemini-1.5-flash',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'gemini-1.5-pro-latest',
-        name: 'gemini-1.5-pro',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'DeepSeek-R1',
-        name: 'DeepSeek-R1',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'gpt-4-turbo',
-        name: 'GPT-4-Turbo',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'gpt-4o',
-        name: 'GPT-4o',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'gpt-4o-mini',
-        name: 'GPT-4o-mini',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'spark',
-        name: '讯飞星火大模型',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    },
-    {
-        id: 'kimi',
-        name: '月之暗面kimi',
-        provider: 'openai',
-        endpoint: 'v1/chat/completions',
-        type: 'chat'
-    }, {
-        id: '@cf/qwen/qwen1.5-14b-chat-awq',
-        name: 'qwen1.5-14b-chat-awq',
-        provider: 'workers-ai',
-        type: 'chat'
-    }, {
-        id: '@cf/openchat/openchat-3.5-0106',
-        name: 'openchat-3.5-0106',
-        provider: 'workers-ai',
-        type: 'chat'
-    }, {
-        id: '@cf/google/gemma-7b-it-lora',
-        name: 'gemma-7b-it-lora',
-        provider: 'workers-ai',
-        type: 'chat'
-    }, {
-        id: '@hf/thebloke/openhermes-2.5-mistral-7b-awq',
-        name: 'openhermes-2.5-mistral-7b-awq',
-        provider: 'workers-ai',
-        type: 'chat'
-    }, {
-        id: '@hf/thebloke/neural-chat-7b-v3-1-awq',
-        name: 'neural-chat-7b-v3-1-awq',
-        provider: 'workers-ai',
-        type: 'chat'
-    }, {
-        id: '@hf/nexusflow/starling-lm-7b-beta',
-        name: 'starling-lm-7b-beta',
-        provider: 'workers-ai',
-        type: 'chat'
-    }, {
-        id: '@cf/meta/llama-3-8b-instruct',
-        name: 'llama-3-8b-instruct',
-        provider: 'workers-ai',
-        type: 'chat'
-    }]
-
+// 只保留图像生成模型
 export const imageGenModels: Model[] = [{
     id: '@cf/lykon/dreamshaper-8-lcm',
     name: 'dreamshaper-8-lcm',
@@ -192,4 +85,5 @@ export const imageGenModels: Model[] = [{
     type: 'text-to-image'
 }]
 
-export const models: Model[] = [...textGenModels, ...imageGenModels]
+// 移除textGenModels,直接导出imageGenModels
+export const models: Model[] = [...imageGenModels]

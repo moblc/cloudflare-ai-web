@@ -65,15 +65,20 @@ export async function handleErr(res: Response) {
 const { passModal } = useGlobalState()
 
 async function handleStream(data: ReadableStream, onStream: (data: string) => void, resolve: (value: unknown) => void) {
-    const reader = data.getReader()
-    const decoder = new TextDecoder()
-    while (true) {
-        const { value, done } = await reader.read()
-        if (done) {
-            resolve(null)
-            break
+    try {
+        const reader = data.getReader()
+        const decoder = new TextDecoder()
+        while (true) {
+            const { value, done } = await reader.read()
+            if (done) {
+                resolve(null)
+                break
+            }
+            onStream(decoder.decode(value))
         }
-        onStream(decoder.decode(value))
+    } catch (e) {
+        console.error('Stream handling error:', e)
+        resolve(null)
     }
 }
 

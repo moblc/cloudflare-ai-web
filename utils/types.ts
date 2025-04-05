@@ -1,8 +1,8 @@
 export interface Model {
     id: string
     name: string
-    provider: 'openai' | 'workers-ai' | 'google' | 'workers-ai-image'
-    type: 'chat' | 'text-to-image' | 'universal'
+    provider: 'openai' | 'workers-ai' | 'workers-ai-image'
+    type: 'chat' | 'text-to-image'
     endpoint?: string
 }
 
@@ -74,6 +74,18 @@ export interface WorkersReqImage {
 
 export interface WorkersRes {
     response: string
+}
+
+export interface OpenAIModel {
+    id: string
+    object: string
+    created: number
+    owned_by: string
+}
+
+export interface OpenAIModelRes {
+    data: OpenAIModel[]
+    object: string
 }
 
 // export interface GeminiReq {
